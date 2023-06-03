@@ -42,11 +42,11 @@ export function mapEspnToSportResult(event: Event): SportResult {
     score: Number(it.score),
     stats: {
       fieldGoalsMade: getStats(it, "FGM"),
-      fieldGoalsPct: getStats(it, "FG%") + "?",
+      fieldGoalsPct: getStats(it, "FG%"),
       threePointMade: getStats(it, "3PM"),
-      threePointPct: getStats(it, "3P%") + "?",
+      threePointPct: getStats(it, "3P%"),
       freeThrowsMade: getStats(it, "FTM"),
-      freeThrowPct: getStats(it, "FT%") + "?",
+      freeThrowPct: getStats(it, "FT%"),
     },
   }));
 
@@ -57,5 +57,10 @@ export function mapEspnToSportResult(event: Event): SportResult {
   };
 }
 
-const getStats = (competitor: Competitor, abb: string) =>
-  competitor.statistics.find((it) => it.abbreviation === abb)?.displayValue;
+const getStats = (competitor: Competitor, abb: string) => {
+  const stat = competitor.statistics.find((it) => it.abbreviation === abb);
+  if (!stat) {
+    return;
+  }
+  return `${stat.displayValue}${abb.endsWith("%") ? "%" : ""}`;
+};

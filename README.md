@@ -55,11 +55,11 @@ Fetches the metadata and the result of a match. The `matchDate`is `YYYYMMDD` for
     "score": 103,
     "stats": {
       "fieldGoalsMade": "33",
-      "fieldGoalsPct": "35.5?",
+      "fieldGoalsPct": "35.5%",
       "threePointMade": "14",
-      "threePointPct": "46.7?",
+      "threePointPct": "46.7%",
       "freeThrowsMade": "23",
-      "freeThrowPct": "79.3?"
+      "freeThrowPct": "79.3%"
     }
   },
   "away": {
@@ -72,11 +72,11 @@ Fetches the metadata and the result of a match. The `matchDate`is `YYYYMMDD` for
     "score": 104,
     "stats": {
       "fieldGoalsMade": "34",
-      "fieldGoalsPct": "43.6?",
+      "fieldGoalsPct": "43.6%",
       "threePointMade": "7",
-      "threePointPct": "20.0?",
+      "threePointPct": "20.0%",
       "freeThrowsMade": "29",
-      "freeThrowPct": "85.3?"
+      "freeThrowPct": "85.3%"
     }
   }
 }
