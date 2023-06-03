@@ -1,5 +1,7 @@
 import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import oakLogger from "https://deno.land/x/oak_logger/mod.ts";
+
 import { fetchEspnScoreboard } from "./sports/fetchEspnScoreboard.ts";
 import { mapEspnToSportResult } from "./sports/mapEspnEventToSportResult.ts";
 
@@ -25,7 +27,9 @@ router.get("/api/sport/nba/:matchDate", async (ctx) => {
 
 const app = new Application();
 app.use(oakCors());
+app.use(oakLogger.logger);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
+console.log("server running on port http://localhost:8000");
 await app.listen({ port: 8000 });
