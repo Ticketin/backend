@@ -4,6 +4,7 @@ import oakLogger from "https://deno.land/x/oak_logger/mod.ts";
 
 import { fetchEspnScoreboard } from "./sports/fetchEspnScoreboard.ts";
 import { mapEspnToSportResult } from "./sports/mapEspnEventToSportResult.ts";
+import { generateQR } from "./qrcode/generateQR.ts";
 
 const router = new Router();
 router.get("/", (context) => {
@@ -23,6 +24,11 @@ router.get("/api/sport/nba/:matchDate", async (ctx) => {
     return;
   }
   ctx.response.body = mapEspnToSportResult(event);
+});
+
+router.get('/api/qrcode/:collectionId', async (ctx) => {
+  ctx.response.headers.set("Content-Type", "image/gif");
+  ctx.response.body = await generateQR(ctx.params.collectionId);
 });
 
 const app = new Application();
