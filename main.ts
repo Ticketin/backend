@@ -42,7 +42,7 @@ router.get("/render", (ctx) => {
     ctx.response.body = "svg query param is required";
     return;
   }
-  const svg = atob(svgBase64);
+  const svg = atob(svgBase64.replaceAll(' ', '+'));
 
   // this allows loading image inside the svg
   ctx.response.headers.set(
