@@ -94,3 +94,34 @@ When match is not held at given date, it returns `HTTP 404 Not Found` with `NOT_
   }
 }
 ```
+
+### GET `/render`
+
+Renders given SVG image as HTML. Used for displaying dynamic-rendered SVG on the NFT platforms that doesn't support 
+loading external images inside SVG. (e.g. OpenSea) 
+
+
+##### Query Parameter
+
+| Name | Description | Required | Example |
+|---|---|---|---|
+| `svg` | Base64 Encoded SVG Image. | **Yes** | `PHN2ZyB3a...` |
+
+##### Request Example
+
+```bash
+ $ curl https://pocky.deno.dev/render?svg=PHN2ZyB3a...
+```
+
+##### Response Example
+
+```html
+<html>
+  <body>
+    <svg width="848" height="848" viewBox="0 0 848 848" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      ...
+    </svg>
+  </body>
+</html>
+```
+
