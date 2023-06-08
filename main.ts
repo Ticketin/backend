@@ -49,7 +49,7 @@ router.get("/render", (ctx) => {
     "Content-Security-Policy",
     "object-src data: 'unsafe-eval'"
   );
-  ctx.response.body = `<html><body>${svg}</body></html>`;
+  ctx.response.body = `<html><body style="width: 100%; text-align: center; background: #0F172A;">${svg.replace('<svg', '<svg style="max-width: 494px; max-height: 494px; display: inline-block;" ')}</body></html>`;
   ctx.response.type = "html";
 });
 
